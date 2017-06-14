@@ -1,6 +1,6 @@
-# A web stack designed for developer happiness
+# A web game scaffold for game developer happiness
 
-The following document describes the Fable + Suave sample project. You can see it running on azure at http://fable-suave.azurewebsites.net.
+This document describes how to use the repo for easily setting up your own custom game with Fable + F#.
 
 ## Requirements
 
@@ -42,11 +42,9 @@ The webserver backend is running as a [Suave.io](https://suave.io/) service on .
 
 In development mode the server is automatically restarted whenever a file in `src/Server` is saved.
 
-### React/Elmish client
+### Pixi and Matter
 
-The client is [React](https://facebook.github.io/react/) single page application that uses [fable-elmish](https://github.com/fable-compiler/fable-elmish) to provide a scaffold for the code.
-
-The communication to the server is done via HTTPS calls to `/api/*`. If a user is logged in then a [JSON Web Token](https://jwt.io/) is sent to the server with every request.
+Pixi.js and Matter.js are the core of the game development, they are providing fast 2D rendering and fast 2D physics.
 
 ### Fable
 
@@ -64,33 +62,7 @@ Start the full build (incl. UI tests) with:
 
     > build.cmd // on windows
     $ ./build.sh // on unix
-
-### Expecto
-
-[Expecto](https://github.com/haf/expecto) is a test framework like NUnit or xUnit, but much more developer friendly. With Expecto you write tests as values in normal code.
-Tests can be composed, reduced, filtered, repeated and passed as values, because they are values. This gives the programmer a lot of leverage when writing tests.
-
-If you are in [development mode](#development-mode) then you can use Expecto's focused test feature to run a selected test against the running server.
-
-### Canopy
-
-[canopy](https://github.com/lefthandedgoat/canopy) is a F# web automation and testing library, built on top of Selenium. In our expecto suite it looks like the following:
-
-        testCase "login with test user" <| fun () ->
-            url serverUrl
-            waitForElement ".elmish-app"
-
-            click "Login"
-
-            "#username" << "test"
-            "#password" << "test"
-
-            click "Log In"
-
-            waitForElement "Isaac Abraham"
-
-![Canopy in action](https://cloud.githubusercontent.com/assets/57396/23131425/38d06e8c-f78a-11e6-9ebc-8442b0abf752.gif)
-
+    
 ## Additional tools
 
 ### FAKE
@@ -103,5 +75,4 @@ If you are in [development mode](#development-mode) then you can use Expecto's f
 
 ## Maintainer(s)
 
-- [@forki](https://github.com/forki)
-- [@alfonsogarciacaro](https://github.com/alfonsogarciacaro)
+- [@realvictorprm](https://github.com/realvictorprm)
